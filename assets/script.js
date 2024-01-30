@@ -6,9 +6,10 @@ var searchButton = document.querySelector("#searchButton");
 
 function getData() {
   var longLatURL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}`;
-  console.log(lat)
-  console.log(lon)
+  
   console.log(longLatURL)
+  
+  
 
   fetch(longLatURL)
     .then(function (response) {
@@ -16,10 +17,11 @@ function getData() {
     })
     .then(function (data) {
       console.log(data);
-      
+      localStorage.setItem(data.city.name, longLatURL);
+            
       var city = data.city.name;
       $("#city").text(data.city.name);
-      console.log(city);
+      console.log(city);260504
   
       // Date One
       var date = data.list[0].dt_txt;
