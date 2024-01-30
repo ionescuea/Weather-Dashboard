@@ -11,12 +11,11 @@
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
   <title>Weather Dashboard</title>
 </head>
-
+<!-- Body -->
 <body>
   <header class="container-fluid text-center text-white bg-dark p-2 weather-header">
     <h1>Weather Dashboard</h1>
   </header>
-
   <!-- max-width for ultra wide resolutions -->
   <div class="container-fluid" style="max-width: 1400px">
     <div class="row">
@@ -28,16 +27,16 @@
           <input class="mb-2 form-control" type="text" id="searchInput" placeholder="London"
             aria-labelledby="form-heading" aria-controls="today forecast" name="searchInput" />
         </div>
-
+        <!-- Search button -->
         <button class="btn btn-primary form-control" id="searchButton">
           Search
         </button>
 
         <hr />
-
+        <!-- History -->
         <div class="list-group" id="history"></div>
       </aside>
-
+      <!-- Today weather -->
       <main class="container col-lg-9">
         <section id="today" class="row mt-3 p-2 border border-dark">
           <h2 class="h3 mt-1 font-weight-bolder">
@@ -51,7 +50,7 @@
             <p>Humidity: <span id="humidityOne"></span>%</p>
           </div>
         </section>
-
+        <!-- 5 days forecast -->
         <section id="forecast" class="row mt-4">
           <h2 class="h4 font-weight-bolder">5-Day Forecast:</h2>
           <div class="container p-0">
