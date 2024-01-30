@@ -28,7 +28,7 @@ Object.keys(localStorage).forEach(function(key){
 
 // Get city
 function getCity () {
-  var longLatURL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}`;
+  var longLatURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}`;
   getData(longLatURL)
 }
 
@@ -56,7 +56,7 @@ function getData(longLatURL) {
       date = dayjs(data.list[0].dt_txt).format("D/MM/YYYY");
       $("#dateOne").text(date);
       var clouds = data.list[0].weather[0].icon;
-      var iconurl = "http://openweathermap.org/img/w/" + clouds + ".png";
+      var iconurl = "https://openweathermap.org/img/w/" + clouds + ".png";
       $("#iconOne").attr('src', iconurl);
       var temp = (data.list[0].main.temp - 273.15).toFixed(2);
       $("#tempOne").text(temp);
@@ -70,7 +70,7 @@ function getData(longLatURL) {
       date = dayjs(data.list[7].dt_txt).format("D/MM/YYYY");
       $("#dateTwo").text(date);
       var clouds = data.list[7].weather[0].icon;
-      var iconurl = "http://openweathermap.org/img/w/" + clouds + ".png";
+      var iconurl = "https://openweathermap.org/img/w/" + clouds + ".png";
       $("#iconTwo").attr('src', iconurl);
       var temp = (data.list[7].main.temp - 273.15).toFixed(2);
       $("#tempTwo").text(temp);
@@ -84,7 +84,7 @@ function getData(longLatURL) {
       date = dayjs(data.list[15].dt_txt).format("D/MM/YYYY");
       $("#dateThree").text(date);
       var clouds = data.list[15].weather[0].icon;
-      var iconurl = "http://openweathermap.org/img/w/" + clouds + ".png";
+      var iconurl = "https://openweathermap.org/img/w/" + clouds + ".png";
       $("#iconThree").attr('src', iconurl);
       var temp = (data.list[15].main.temp - 273.15).toFixed(2);
       $("#tempThree").text(temp);
@@ -98,7 +98,7 @@ function getData(longLatURL) {
       date = dayjs(data.list[23].dt_txt).format("D/MM/YYYY");
       $("#dateFour").text(date);
       var clouds = data.list[23].weather[0].icon;
-      var iconurl = "http://openweathermap.org/img/w/" + clouds + ".png";
+      var iconurl = "https://openweathermap.org/img/w/" + clouds + ".png";
       $("#iconFour").attr('src', iconurl);
       var temp = (data.list[23].main.temp - 273.15).toFixed(2);
       $("#tempFour").text(temp);
@@ -112,7 +112,7 @@ function getData(longLatURL) {
       date = dayjs(data.list[31].dt_txt).format("D/MM/YYYY");
       $("#dateFive").text(date);
       var clouds = data.list[31].weather[0].icon;
-      var iconurl = "http://openweathermap.org/img/w/" + clouds + ".png";
+      var iconurl = "https://openweathermap.org/img/w/" + clouds + ".png";
       $("#iconFive").attr('src', iconurl);
       var temp = (data.list[31].main.temp - 273.15).toFixed(2);
       $("#tempFive").text(temp);
@@ -126,7 +126,7 @@ function getData(longLatURL) {
       date = dayjs(data.list[39].dt_txt).format("D/MM/YYYY");
       $("#dateSix").text(date);
       var clouds = data.list[39].weather[0].icon;
-      var iconurl = "http://openweathermap.org/img/w/" + clouds + ".png";
+      var iconurl = "https://openweathermap.org/img/w/" + clouds + ".png";
       $("#iconSix").attr('src', iconurl);
       var temp = (data.list[39].main.temp - 273.15).toFixed(2);
       $("#tempSix").text(temp);
@@ -139,7 +139,7 @@ function getData(longLatURL) {
 
 function getLatLong () {
   var searchInput = document.querySelector("#searchInput");
-  var cityNameURL = `http://api.openweathermap.org/geo/1.0/direct?q=${searchInput.value}&limit=1&appid=${APIkey}`;
+  var cityNameURL = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInput.value}&limit=1&appid=${APIkey}`;
 
   fetch(cityNameURL)
     .then(function (response) {
