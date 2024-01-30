@@ -3,13 +3,37 @@ var lat = 0
 var lon = 0
 var searchButton = document.querySelector("#searchButton");
 
+// clear history div content
+$("#history").html("");
 
-function getData() {
+// load url from local storage and update page content
+function loadFromHistory() {
+  getData(localStorage.getItem(this.innerHTML))
+}
+
+// add history button and create event listener
+function addHistoryButton (key) {
+  var btn = document.createElement('button');
+  btn.innerHTML = key;
+  document.querySelector("#history").appendChild(btn);
+  btn.setAttribute("class", "btn btn-secondary mb-3 history-button")
+  btn.addEventListener('click', loadFromHistory);
+}
+
+// add history buttons with data from local storage
+Object.keys(localStorage).forEach(function(key){
+  addHistoryButton(key)
+});
+
+
+
+function getCity () {
   var longLatURL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIkey}`;
-  
+  getData(longLatURL)
+}
+
+function getData(longLatURL) {
   console.log(longLatURL)
-  
-  
 
   fetch(longLatURL)
     .then(function (response) {
@@ -17,8 +41,12 @@ function getData() {
     })
     .then(function (data) {
       console.log(data);
+      // add history button if not in local storage then add/update local storage
+      if (!localStorage.getItem(data.city.name)) {
+        addHistoryButton(data.city.name);
+      }
       localStorage.setItem(data.city.name, longLatURL);
-            
+
       var city = data.city.name;
       $("#city").text(data.city.name);
       console.log(city);260504
@@ -144,7 +172,7 @@ function getLatLong () {
     .then(function (data) {
       lat = data[0].lat;
       lon = data[0].lon;
-    }).then(getData)
+    }).then(getCity)
 }
 
 function updateData() {
