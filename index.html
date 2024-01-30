@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
   <title>Weather Dashboard</title>
@@ -19,37 +20,99 @@
   <!-- max-width for ultra wide resolutions -->
   <div class="container-fluid" style="max-width: 1400px">
     <div class="row">
+      <aside class="col-lg-3">
+        <div>
+          <label id="form-heading" class="mt-1 h3 form-label">
+            Search for a City:
+          </label>
+          <input class="mb-2 form-control" type="text" id="searchInput" placeholder="London"
+            aria-labelledby="form-heading" aria-controls="today forecast" name="searchInput" />
+        </div>
 
-      <aside class="col-lg-3 pb-3">
-        <h2 id="form-heading" class="mt-1 h3 form-label">
-          Search for a City:
-        </h2>
+        <button class="btn btn-primary form-control" id="searchButton">
+          Search
+        </button>
 
-        <form id="search-form" class="form">
-          <div class="form-inline form-group">
-            <div class="input-group">
-              <input class="form-input weather-search" type="text" id="search-input" placeholder="London, GB"
-                aria-labelledby="form-heading" aria-controls="today forecast" />
-              
-                <div class="d-grid gap-2 col-6 mx-auto">
-                <button type="submit" class="btn btn-primary" id="search-button" aria-label="submit search">
-                  Search
-                </button>
-                <hr class="hr weather-hr" />
+        <hr />
+
+        <div class="list-group" id="history">
+          <button class="btn btn-secondary mb-2">Town</button>
+          <button class="btn btn-secondary mb-2">Town</button>
+          <button class="btn btn-secondary mb-2">Town</button>
+          <button class="btn btn-secondary mb-2">Town</button>
+          <button class="btn btn-secondary mb-2">Town</button>
+        </div>
+      </aside>
+
+      <main class="container col-lg-9">
+        <section id="today" class="row mt-3 p-2 border border-dark">
+          <h2 class="h3 mt-1 font-weight-bolder">
+            <span class="ml-1" id="city"></span>
+            &#40;<span class="ml-1 mt-1" id="dateOne"></span>&#41;
+            <span id="wicon"><img class="ml-1" id="iconOne" src="" alt="Weather icon"></span>
+          </h2>
+          <div class="col-lg-9 pl-2">
+            <p>Temp: <span id="tempOne"></span> &#8451</p>
+            <p>Wind: <span id="windOne"></span> KPH</p>
+            <p>Humidity: <span id="humidityOne"></span>%</p>
+          </div>
+        </section>
+
+        <section id="forecast" class="row mt-4">
+          <h2 class="h4 font-weight-bolder">5-Day Forecast:</h2>
+          <div class="container p-0">
+            <div class="d-flex justify-content-between text-white">
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title" id="dateTwo"></h3>
+                  <p id="wicon"><img class="ml-1" id="iconTwo" src="" alt="Weather icon"></p>
+                  <p class="card-text">Temp: <span id="tempTwo"></span> &#8451</p>
+                  <p class="card-text">Wind: <span id="windTwo"></span> KPH</p>
+                  <p class="card-text">Humidity: <span id="humidityTwo"></span>%</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title" id="dateThree"></h3>
+                  <p id="wicon"><img class="ml-1" id="iconThree" src="" alt="Weather icon"></p>
+                  <p class="card-text">Temp: <span id="tempThree"></span> &#8451</p>
+                  <p class="card-text">Wind: <span id="windThree"></span> KPH</p>
+                  <p class="card-text">Humidity: <span id="humidityThree"></span>%</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title" id="dateFour"></h3>
+                  <p id="wicon"><img class="ml-1" id="iconFour" src="" alt="Weather icon"></p>
+                  <p class="card-text">Temp: <span id="tempFour"></span> &#8451</p>
+                  <p class="card-text">Wind: <span id="windFour"></span> KPH</p>
+                  <p class="card-text">Humidity: <span id="humidityFour"></span>%</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title" id="dateFive"></h3>
+                  <p id="wicon"><img class="ml-1" id="iconFive" src="" alt="Weather icon"></p>
+                  <p class="card-text">Temp: <span id="tempFive"></span> &#8451</p>
+                  <p class="card-text">Wind: <span id="windFive"></span> KPH</p>
+                  <p class="card-text">Humidity: <span id="humidityFive"></span>%</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title" id="dateSix"></h3>
+                  <p id="wicon"><img class="ml-1" id="iconSix" src="" alt="Weather icon"></p>
+                  <p class="card-text">Temp: <span id="tempSix"></span> &#8451</p>
+                  <p class="card-text">Wind: <span id="windSix"></span> KPH</p>
+                  <p class="card-text">Humidity: <span id="humiditySix"></span>%</p>
+                </div>
               </div>
             </div>
           </div>
-        </form>
 
-        <div class="list-group" id="history"></div>
-      </aside>
-
-      <div class="col-lg-9 pb-3">
-        <section id="today" class="mt-3" role="region" aria-live="polite"></section>
-        <section id="forecast" class="row mt-3" role="region" aria-live="polite"></section>
-          <!-- <div id="wicon"><img id="iconOne" src="" alt="Weather icon"></div> -->
-      </div>
-    </div>
+    </section>
+    </main>
+  </div>
   </div>
 
   <!-- Day.js -->
