@@ -1,3 +1,13 @@
 header {
-    background-image: linear-gradient(to right, blue, navy);
+    background-image: linear-gradient(to right, rgb(52,97,186), rgb(33,11,77));
+}
+
+.card {
+    background-color: rgb(45,62,80);
+}
+
+.list {
+    background-color: rgb(45,62,80);
+    color: white;
+    border: none;
 }
